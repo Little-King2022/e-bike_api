@@ -4,16 +4,18 @@ import VehicleDataChart from './components/VehicleDataChart.vue'
 
 <template>
   <div class="container">
-    <h1>电动车数据监控</h1>
+    <!-- <h1>电动车数据监控</h1> -->
     <VehicleDataChart />
   </div>
 </template>
 
 <style>
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f7fa;
 }
 
 h1 {
