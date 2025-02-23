@@ -1,11 +1,16 @@
 from flask import Flask, jsonify, request
 import redis
 import json
+import os
 
 app = Flask(__name__)
 
-# Redis 连接配置
-redis_client = redis.Redis(host='124.223.78.187', port=5200, db=0, password='H4itLSIFYHLBkmBAa6ez')
+# Redis 连接配置，从环境变量中读取密码
+redis_password = os.getenv('REDIS_PASSWORD')
+if not redis_password:
+    raise ValueError("REDIS_PASSWORD environment variable is not set")
+
+redis_client = redis.Redis(host='localhost', port=5200, db=0, password=redis_password)
 
 # 查询指定日期的数据
 @app.route('/api/get_vehicle_data', methods=['GET'])
