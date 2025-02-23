@@ -55,7 +55,7 @@ const fetchData = async (dates) => {
     const allData = []
     for (const date of dates) {
       const formattedDate = formatDate(date)
-      const response = await axios.get(`http://ebike.littleking.site/api/get_vehicle_data?date=${formattedDate}`)
+      const response = await axios.get(`https://ebike.littleking.site/api/get_vehicle_data?date=${formattedDate}`)
       allData.push(response.data)
     }
     
