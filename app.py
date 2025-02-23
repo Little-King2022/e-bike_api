@@ -1,9 +1,19 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 import redis
 import json
 import os
 
 app = Flask(__name__)
+# 只允许特定域名访问
+CORS(app, resources={
+    r"/api/*": {
+        "origins": [
+            "http://localhost:5173",  # 开发环境
+            "http://ebike.littleking.site"  # 生产环境
+        ]
+    }
+})
 
 # Redis 连接配置，从环境变量中读取密码
 redis_password = os.getenv('REDIS_PASSWORD')
