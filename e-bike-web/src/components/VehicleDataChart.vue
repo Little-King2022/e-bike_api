@@ -249,14 +249,14 @@ onMounted(() => {
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;  /* 改为flex-start以便垂直布局时对齐 */
   margin-bottom: 20px;
   padding: 0 20px;
 }
 
 .controls {
   display: flex;
-  align-items: center;
+  align-items: flex-start;  /* 改为flex-start以便垂直布局时对齐 */
   gap: 20px;
 }
 
@@ -313,5 +313,75 @@ h1 {
   height: calc(100vh - 120px);
   min-height: 600px;
   padding: 10px;  /* 添加内边距 */
+}
+
+/* 添加移动端适配样式 */
+@media screen and (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 10px;
+    gap: 15px;
+  }
+
+  .controls {
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+  }
+
+  .tabs {
+    width: 100%;
+  }
+
+  .tabs button {
+    flex: 1;
+    white-space: nowrap;
+    font-size: 14px;
+    padding: 6px 8px;
+  }
+
+  .date-range-picker {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .date-range-picker input {
+    width: calc(50% - 20px);
+  }
+
+  h1 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .chart {
+    height: calc(100vh - 250px);  /* 调整图表高度以适应更多的header高度 */
+    min-height: 400px;
+  }
+}
+
+/* 更小屏幕的额外优化 */
+@media screen and (max-width: 480px) {
+  .chart-container {
+    padding: 10px;
+  }
+
+  .tabs button {
+    font-size: 12px;
+    padding: 6px 4px;
+  }
+
+  .date-range-picker input {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .date-range-picker span {
+    width: 100%;
+    text-align: center;
+    margin: 4px 0;
+  }
 }
 </style> 
